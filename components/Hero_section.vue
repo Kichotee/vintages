@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-8 my-2  h-screen">
+    <div class="mx-8 my-2  h-screen ">
 
         
 
@@ -15,6 +15,9 @@
                     height="400"
                     class="w-100 md-w-75 border grayscale "
                     cover
+                    appear
+                    @enter="imgEnter"
+                    @before-enter="imgBeforeEnter"
                 >
                 </v-img>
             </div>
@@ -48,7 +51,11 @@
 </template>
 
 <script setup>
-   const {image}= defineProps(['image'])
+   import gsap from 'gsap';
+
+   const {image}= defineProps(['image']);
+   
+
 
 </script>
 

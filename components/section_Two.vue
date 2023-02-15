@@ -3,7 +3,9 @@
 		<div class="mx-4 sm-mx-2 h-screen ">
 			<v-row class="w-100 h-100">
 				<v-col class="h-100" cols="12"  md="6" order-md=2 >
-					<div class="h-100 " >
+					<div class="h-100 "  
+					@enter="imgEnter"
+                    @before-enter="imgBeforeEnter">
 						<v-img
 							:src="image"
 							aspect-ratio="16/9"
@@ -42,6 +44,26 @@
 
 <script setup>
 	const { image } = defineProps(["image"]);
+	const imgBeforeEnter=ref()
+	const imgEnter=ref()
+
+
+		 imgBeforeEnter.value= (el)=>{
+		gsap.from(el,{
+			opacity:0,
+			x:'100%'
+		})
+	   }
+	    imgEnter.value=(el)=>{
+		gsap.to(el,{
+			
+			scrollTrigger:{
+			opacity:1,
+			x:0,
+			}
+		})
+	   }
+	
 </script>
 
 <style lang="scss" scoped></style>
